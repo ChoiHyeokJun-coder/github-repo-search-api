@@ -949,7 +949,230 @@ element.addEventListener('click', function() {
 
 ---
 
+---
+
+## 🎯 7차 요청 (GitHub API 호출 함수 작성)
+
+### 사용자 요청
+```
+GitHub Repository Search API를 호출하는 fetchRepos 함수를 작성해 주세요.
+
+조건:
+1. 함수 이름은 fetchRepos입니다.
+2. keyword를 매개변수로 받습니다.
+3. fetch와 async/await를 사용합니다.
+4. 검색어는 encodeURIComponent로 처리합니다.
+5. stars 기준 내림차순으로 정렬합니다.
+6. 결과는 6개만 가져옵니다.
+7. response.ok를 확인합니다.
+8. 실패하면 throw new Error를 사용합니다.
+9. JSON 데이터를 return합니다.
+10. 초보자가 이해할 수 있도록 주석을 달아 주세요.
+```
+
+### 수행 작업
+
+**fetch-repos.js 생성**
+- async/await 패턴을 사용한 API 호출 함수
+- 5단계로 구분된 명확한 코드 구조
+- 각 단계마다 상세한 한글 주석
+- 3가지 사용 예시 포함
+
+### 핵심 코드 구조
+
+#### 함수 정의
+```javascript
+async function fetchRepos(keyword) {
+  // 1단계: API URL 생성
+  const encodedKeyword = encodeURIComponent(keyword);
+  const url = `https://api.github.com/search/repositories?q=${encodedKeyword}&sort=stars&order=desc&per_page=6`;
+  
+  // 2단계: API 호출
+  const response = await fetch(url);
+  
+  // 3단계: 응답 상태 확인
+  if (!response.ok) {
+    throw new Error(`API 호출 실패: ${response.status} ${response.statusText}`);
+  }
+  
+  // 4단계: JSON 데이터 파싱
+  const data = await response.json();
+  
+  // 5단계: 데이터 반환
+  return data;
+}
+```
+
+### 사용 예시
+
+#### 예시 1: async/await 패턴
+```javascript
+async function example1() {
+  try {
+    const data = await fetchRepos('react');
+    console.log('검색 결과:', data);
+    console.log('저장소 개수:', data.items.length);
+    console.log('첫 번째 저장소:', data.items[0].full_name);
+  } catch (error) {
+    console.error('에러 발생:', error.message);
+  }
+}
+```
+
+#### 예시 2: Promise then/catch 패턴
+```javascript
+function example2() {
+  fetchRepos('vue')
+    .then(data => {
+      console.log('검색 결과:', data);
+    })
+    .catch(error => {
+      console.error('에러 발생:', error.message);
+    });
+}
+```
+
+#### 예시 3: 저장소 목록 출력
+```javascript
+async function example3() {
+  try {
+    const data = await fetchRepos('javascript');
+    
+    data.items.forEach((repo, index) => {
+      console.log(`${index + 1}. ${repo.full_name}`);
+      console.log(`   ⭐ ${repo.stargazers_count.toLocaleString()}`);
+      console.log(`   📝 ${repo.description || '설명 없음'}`);
+    });
+  } catch (error) {
+    console.error('에러 발생:', error.message);
+  }
+}
+```
+
+### 응답 데이터 구조
+```javascript
+{
+  "total_count": 123456,           // 전체 검색 결과 개수
+  "incomplete_results": false,     // 결과가 불완전한지 여부
+  "items": [                       // 저장소 목록 (최대 6개)
+    {
+      "id": 10270250,
+      "name": "react",
+      "full_name": "facebook/react",
+      "description": "A declarative, efficient...",
+      "html_url": "https://github.com/facebook/react",
+      "stargazers_count": 200000,
+      "forks_count": 40000,
+      "language": "JavaScript",
+      ...
+    },
+    ...
+  ]
+}
+```
+
+---
+
+## 🔑 7차 요청 핵심 성과
+
+### 1. 요구사항 완벽 충족
+- ✅ 함수명: `fetchRepos`
+- ✅ 매개변수: `keyword`
+- ✅ async/await 사용
+- ✅ encodeURIComponent 처리
+- ✅ stars 내림차순 정렬
+- ✅ 결과 6개 제한
+- ✅ response.ok 확인
+- ✅ throw new Error 사용
+- ✅ JSON 데이터 반환
+- ✅ 상세한 주석
+
+### 2. 코드 구조
+- ✅ 5단계로 명확하게 구분
+- ✅ 각 단계마다 상세한 설명
+- ✅ 초보자도 이해 가능한 주석
+- ✅ 에러 처리 포함
+
+### 3. 추가 제공 사항
+- ✅ 3가지 사용 예시
+- ✅ 응답 데이터 구조 설명
+- ✅ 에러 처리 방법 안내
+- ✅ 주의사항 정리
+
+---
+
+## 📁 업데이트된 파일 목록
+
+### 전체 파일 구조
+```
+task_4/
+├── 📄 index.html                    # HTML 구조 (camelCase ID)
+├── 🎨 style.css                     # 다크 모드 CSS (400+ 줄)
+├── ⚙️ app.js                        # JavaScript 로직 (GitHub API)
+├── 🔰 simple-search.js              # 순수 JavaScript 입력 검증
+├── 🌐 fetch-repos.js                # GitHub API 호출 함수 (신규)
+├── 📖 STRUCTURE.md                  # 구조 설명
+├── 📝 README.md                     # 초보자 가이드
+├── 📚 API_URL_EXAMPLE.md            # API 문서
+├── 🔧 github-api-url-builder.js     # API URL 예시
+├── 🐙 GITHUB_SETUP.md               # GitHub 가이드
+└── 📋 PROMPT.md                     # 진행 기록 (현재 파일)
+```
+
+---
+
+## 💡 async/await 학습 포인트
+
+### async 함수
+```javascript
+// async 키워드로 비동기 함수 정의
+async function fetchRepos(keyword) {
+  // 함수 내용
+}
+
+// async 함수는 항상 Promise를 반환합니다
+```
+
+### await 키워드
+```javascript
+// await는 Promise가 완료될 때까지 기다립니다
+const response = await fetch(url);
+const data = await response.json();
+
+// await는 async 함수 내에서만 사용 가능
+```
+
+### 에러 처리
+```javascript
+// try-catch로 에러 처리
+try {
+  const data = await fetchRepos('keyword');
+  // 성공 시 실행
+} catch (error) {
+  // 에러 발생 시 실행
+  console.error('에러:', error.message);
+}
+```
+
+### Promise vs async/await
+```javascript
+// Promise 방식
+fetchRepos('react')
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+
+// async/await 방식 (더 읽기 쉬움)
+try {
+  const data = await fetchRepos('react');
+  console.log(data);
+} catch (error) {
+  console.error(error);
+}
+```
+
+---
+
 **작성일**: 2026년 5월 11일  
 **프로젝트**: GitHub Repository Search Board  
-**버전**: 3.1.0 (입력 검증 추가)
-**최종 업데이트**: 2026년 5월 11일 21:21
+**버전**: 3.2.0 (API 호출 함수 추가)
+**최종 업데이트**: 2026년 5월 11일 21:35
