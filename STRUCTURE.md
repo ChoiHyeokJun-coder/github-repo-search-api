@@ -24,29 +24,29 @@ task_4/
 ```html
 <input 
   type="text" 
-  id="search-input" 
+  id="searchInput" 
   placeholder="저장소 키워드를 입력하세요 (예: react, ai)" 
 />
 ```
-- **ID**: `search-input`
+- **ID**: `searchInput`
 - **용도**: 사용자가 검색할 키워드 입력
-- **JavaScript 선택**: `document.getElementById('search-input')`
+- **JavaScript 선택**: `document.getElementById('searchInput')`
 
 #### 2. 검색 버튼
 ```html
-<button id="search-btn">검색</button>
+<button id="searchButton">검색</button>
 ```
-- **ID**: `search-btn`
+- **ID**: `searchButton`
 - **용도**: 검색 실행 트리거
-- **JavaScript 선택**: `document.getElementById('search-btn')`
+- **JavaScript 선택**: `document.getElementById('searchButton')`
 
 #### 3. 상태 메시지 영역
 ```html
-<div id="status-message">검색어를 입력하고 검색 버튼을 눌러주세요.</div>
+<div id="statusMessage">검색어를 입력하고 검색 버튼을 눌러주세요.</div>
 ```
-- **ID**: `status-message`
+- **ID**: `statusMessage`
 - **용도**: 검색 상태 및 결과 메시지 표시
-- **JavaScript 선택**: `document.getElementById('status-message')`
+- **JavaScript 선택**: `document.getElementById('statusMessage')`
 - **표시 내용**:
   - 초기: "검색어를 입력하고 검색 버튼을 눌러주세요."
   - 검색 중: "'react' 저장소를 검색 중입니다..."
@@ -55,12 +55,12 @@ task_4/
 
 #### 4. 저장소 카드 목록 영역
 ```html
-<div id="repo-list" class="repo-list"></div>
+<div id="repoList" class="repo-list"></div>
 ```
-- **ID**: `repo-list`
+- **ID**: `repoList`
 - **Class**: `repo-list`
 - **용도**: 검색된 저장소 카드를 동적으로 표시
-- **JavaScript 선택**: `document.getElementById('repo-list')`
+- **JavaScript 선택**: `document.getElementById('repoList')`
 
 ---
 
@@ -93,10 +93,10 @@ task_4/
 
 ### DOM 요소 선택
 ```javascript
-const searchInput = document.getElementById('search-input');
-const searchBtn = document.getElementById('search-btn');
-const statusMessage = document.getElementById('status-message');
-const repoList = document.getElementById('repo-list');
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
+const statusMessage = document.getElementById('statusMessage');
+const repoList = document.getElementById('repoList');
 ```
 
 ### 주요 함수
@@ -122,7 +122,7 @@ const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(k
 
 1. **클릭 이벤트**
 ```javascript
-searchBtn.addEventListener('click', searchRepositories);
+searchButton.addEventListener('click', searchRepositories);
 ```
 
 2. **엔터키 이벤트**
@@ -140,10 +140,10 @@ searchInput.addEventListener('keypress', (e) => {
 
 | 요소 | ID | 용도 | JavaScript 선택 |
 |------|-----|------|------------------|
-| 검색 입력창 | `search-input` | 키워드 입력 | `getElementById('search-input')` |
-| 검색 버튼 | `search-btn` | 검색 실행 | `getElementById('search-btn')` |
-| 상태 메시지 | `status-message` | 상태 표시 | `getElementById('status-message')` |
-| 카드 목록 | `repo-list` | 결과 표시 | `getElementById('repo-list')` |
+| 검색 입력창 | `searchInput` | 키워드 입력 | `getElementById('searchInput')` |
+| 검색 버튼 | `searchButton` | 검색 실행 | `getElementById('searchButton')` |
+| 상태 메시지 | `statusMessage` | 상태 표시 | `getElementById('statusMessage')` |
+| 카드 목록 | `repoList` | 결과 표시 | `getElementById('repoList')` |
 
 ---
 
@@ -189,10 +189,10 @@ searchInput.addEventListener('keypress', (e) => {
 
 ## ✅ 요구사항 충족 확인
 
-- ✅ **검색어 입력창**: `<input id="search-input">`
-- ✅ **검색 버튼**: `<button id="search-btn">`
-- ✅ **상태 메시지 영역**: `<div id="status-message">`
-- ✅ **저장소 카드 목록 영역**: `<div id="repo-list">`
+- ✅ **검색어 입력창**: `<input id="searchInput">`
+- ✅ **검색 버튼**: `<button id="searchButton">`
+- ✅ **상태 메시지 영역**: `<div id="statusMessage">`
+- ✅ **저장소 카드 목록 영역**: `<div id="repoList">`
 - ✅ **명확한 ID 부여**: 모든 주요 요소에 ID 설정
 - ✅ **CSS 분리**: `style.css` 파일로 분리
 - ✅ **JavaScript 분리**: `app.js` 파일로 분리

@@ -1,148 +1,404 @@
-/* GitHub Repository Search Board - Styles */
+/* GitHub Repository Search Board - Dark Mode Styles */
 
-/* CSS 변수 정의 */
+/* ============================================
+   CSS 변수 정의 (다크 모드 테마)
+   ============================================ */
 :root {
-  --primary-color: #2da44e;
-  --bg-color: #f6f8fa;
-  --border-color: #d0d7de;
-  --text-color: #24292f;
-  --text-muted: #57606a;
+  /* 배경 색상 */
+  --bg-primary: #0d1117;        /* 메인 배경 (진한 검정) */
+  --bg-secondary: #161b22;      /* 카드 배경 (약간 밝은 검정) */
+  --bg-tertiary: #21262d;       /* 호버 배경 */
+  
+  /* 텍스트 색상 */
+  --text-primary: #c9d1d9;      /* 주요 텍스트 (밝은 회색) */
+  --text-secondary: #8b949e;    /* 보조 텍스트 (중간 회색) */
+  --text-link: #58a6ff;         /* 링크 색상 (파란색) */
+  
+  /* 강조 색상 */
+  --accent-primary: #238636;    /* 주요 강조 (녹색) */
+  --accent-hover: #2ea043;      /* 호버 강조 */
+  
+  /* 테두리 색상 */
+  --border-color: #30363d;      /* 테두리 (어두운 회색) */
+  
+  /* 그림자 */
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
-/* 기본 body 스타일 */
+/* ============================================
+   기본 body 스타일
+   ============================================ */
 body {
+  /* 폰트 설정 */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  
+  /* 배경 및 텍스트 색상 */
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  
+  /* 여백 제거 */
   margin: 0;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 0;
+  
+  /* 최소 높이 설정 */
+  min-height: 100vh;
 }
 
-/* 컨테이너 */
+/* ============================================
+   컨테이너 (전체 레이아웃)
+   ============================================ */
 .container {
-  width: 100%;
-  max-width: 800px;
+  /* 최대 너비 설정 */
+  max-width: 1200px;
+  
+  /* 중앙 정렬 */
+  margin: 0 auto;
+  
+  /* 여백 설정 */
+  padding: 40px 20px;
 }
 
-/* 제목 */
+/* ============================================
+   제목 스타일
+   ============================================ */
 h1 {
+  /* 텍스트 중앙 정렬 */
   text-align: center;
-  margin-bottom: 20px;
+  
+  /* 텍스트 색상 */
+  color: var(--text-primary);
+  
+  /* 폰트 크기 및 굵기 */
+  font-size: 2.5rem;
+  font-weight: 700;
+  
+  /* 아래 여백 */
+  margin-bottom: 40px;
+  
+  /* 텍스트 그림자 효과 */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* 검색 박스 */
+/* ============================================
+   검색 박스 (상단 배치)
+   ============================================ */
 .search-box {
+  /* Flexbox 레이아웃 */
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  
+  /* 간격 설정 */
+  gap: 12px;
+  
+  /* 아래 여백 */
+  margin-bottom: 30px;
+  
+  /* 최대 너비 및 중앙 정렬 */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* 검색 입력창 */
+/* ============================================
+   검색 입력창
+   ============================================ */
 .search-box input {
+  /* 너비 설정 (남은 공간 차지) */
   flex: 1;
-  padding: 10px 15px;
+  
+  /* 안쪽 여백 */
+  padding: 14px 20px;
+  
+  /* 폰트 크기 */
   font-size: 16px;
+  
+  /* 배경 및 텍스트 색상 */
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  
+  /* 테두리 설정 */
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: 8px;
+  
+  /* 외곽선 제거 */
   outline: none;
+  
+  /* 전환 효과 */
+  transition: all 0.3s ease;
 }
 
+/* 입력창 포커스 시 */
 .search-box input:focus {
-  border-color: #0969da;
-  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.3);
+  /* 테두리 색상 변경 */
+  border-color: var(--text-link);
+  
+  /* 그림자 효과 */
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.3);
 }
 
-/* 검색 버튼 */
+/* 입력창 placeholder 스타일 */
+.search-box input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   검색 버튼
+   ============================================ */
 .search-box button {
-  padding: 10px 20px;
+  /* 안쪽 여백 */
+  padding: 14px 32px;
+  
+  /* 폰트 설정 */
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
-  background-color: var(--primary-color);
-  border: 1px solid rgba(27, 31, 36, 0.15);
-  border-radius: 6px;
+  
+  /* 배경 및 텍스트 색상 */
+  background-color: var(--accent-primary);
+  color: #ffffff;
+  
+  /* 테두리 설정 */
+  border: none;
+  border-radius: 8px;
+  
+  /* 커서 모양 */
   cursor: pointer;
-  transition: 0.2s;
+  
+  /* 전환 효과 */
+  transition: all 0.3s ease;
+  
+  /* 그림자 효과 */
+  box-shadow: 0 4px 12px rgba(35, 134, 54, 0.3);
 }
 
+/* 버튼 호버 시 */
 .search-box button:hover {
-  background-color: #2c974b;
+  /* 배경 색상 변경 */
+  background-color: var(--accent-hover);
+  
+  /* 위로 살짝 이동 */
+  transform: translateY(-2px);
+  
+  /* 그림자 강화 */
+  box-shadow: 0 6px 16px rgba(35, 134, 54, 0.4);
 }
 
-/* 상태 메시지 */
-#status-message {
+/* 버튼 클릭 시 */
+.search-box button:active {
+  /* 원래 위치로 */
+  transform: translateY(0);
+}
+
+/* ============================================
+   상태 메시지
+   ============================================ */
+#statusMessage {
+  /* 텍스트 중앙 정렬 */
   text-align: center;
-  margin-bottom: 20px;
+  
+  /* 아래 여백 */
+  margin-bottom: 30px;
+  
+  /* 폰트 크기 및 색상 */
   font-size: 14px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
+  
+  /* 최소 높이 */
   min-height: 20px;
 }
 
-/* 저장소 목록 (그리드 레이아웃) */
+/* ============================================
+   저장소 목록 (반응형 그리드)
+   ============================================ */
 .repo-list {
+  /* 그리드 레이아웃 */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 15px;
+  
+  /* 모바일: 1열 (기본값) */
+  grid-template-columns: 1fr;
+  
+  /* 간격 설정 */
+  gap: 20px;
 }
 
-/* 저장소 카드 */
+/* 태블릿: 2열 (768px 이상) */
+@media (min-width: 768px) {
+  .repo-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 데스크톱: 3열 (1024px 이상) */
+@media (min-width: 1024px) {
+  .repo-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   저장소 카드
+   ============================================ */
 .repo-card {
-  background: #fff;
+  /* 배경 색상 */
+  background-color: var(--bg-secondary);
+  
+  /* 테두리 설정 */
   border: 1px solid var(--border-color);
-  border-radius: 6px;
-  padding: 16px;
+  border-radius: 12px;
+  
+  /* 안쪽 여백 */
+  padding: 20px;
+  
+  /* Flexbox 레이아웃 */
   display: flex;
   flex-direction: column;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  
+  /* 그림자 효과 */
+  box-shadow: var(--shadow);
+  
+  /* 전환 효과 */
+  transition: all 0.3s ease;
 }
 
-/* 저장소 제목 */
+/* 카드 호버 시 */
+.repo-card:hover {
+  /* 테두리 색상 변경 */
+  border-color: var(--text-link);
+  
+  /* 위로 살짝 이동 */
+  transform: translateY(-4px);
+  
+  /* 그림자 강화 */
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* ============================================
+   저장소 제목
+   ============================================ */
 .repo-card h3 {
-  margin: 0 0 8px 0;
-  font-size: 18px;
-  color: #0969da;
-  word-break: break-all;
-}
-
-/* 저장소 설명 */
-.repo-card p {
+  /* 여백 설정 */
   margin: 0 0 12px 0;
-  font-size: 14px;
-  color: var(--text-muted);
-  flex: 1;
+  
+  /* 폰트 설정 */
+  font-size: 18px;
+  font-weight: 600;
+  
+  /* 텍스트 색상 */
+  color: var(--text-link);
+  
+  /* 긴 텍스트 처리 */
+  word-break: break-word;
+  
+  /* 줄 높이 */
+  line-height: 1.4;
 }
 
-/* 저장소 통계 (별점, 포크) */
+/* ============================================
+   저장소 설명
+   ============================================ */
+.repo-card p {
+  /* 여백 설정 */
+  margin: 0 0 16px 0;
+  
+  /* 폰트 설정 */
+  font-size: 14px;
+  line-height: 1.6;
+  
+  /* 텍스트 색상 */
+  color: var(--text-secondary);
+  
+  /* 남은 공간 차지 */
+  flex: 1;
+  
+  /* 최대 3줄까지만 표시 */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ============================================
+   저장소 통계 (별점, 포크)
+   ============================================ */
 .repo-stats {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-bottom: 12px;
+  /* Flexbox 레이아웃 */
   display: flex;
-  gap: 15px;
+  gap: 16px;
+  
+  /* 아래 여백 */
+  margin-bottom: 16px;
+  
+  /* 폰트 설정 */
+  font-size: 13px;
+  color: var(--text-secondary);
 }
 
 .repo-stats span {
+  /* Flexbox 레이아웃 */
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 
-/* 저장소 링크 버튼 */
+/* ============================================
+   저장소 링크 버튼
+   ============================================ */
 .repo-link {
+  /* 텍스트 중앙 정렬 */
   text-align: center;
   text-decoration: none;
-  padding: 6px 12px;
+  
+  /* 안쪽 여백 */
+  padding: 10px 16px;
+  
+  /* 폰트 설정 */
   font-size: 14px;
-  color: var(--text-color);
-  background-color: #f6f8fa;
+  font-weight: 600;
+  
+  /* 배경 및 텍스트 색상 */
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  
+  /* 테두리 설정 */
   border: 1px solid var(--border-color);
-  border-radius: 6px;
-  transition: 0.2s;
+  border-radius: 8px;
+  
+  /* 전환 효과 */
+  transition: all 0.3s ease;
 }
 
+/* 링크 호버 시 */
 .repo-link:hover {
-  background-color: #f3f4f6;
+  /* 배경 색상 변경 */
+  background-color: var(--accent-primary);
+  
+  /* 테두리 색상 변경 */
+  border-color: var(--accent-primary);
+  
+  /* 텍스트 색상 변경 */
+  color: #ffffff;
+}
+
+/* ============================================
+   반응형: 모바일 최적화 (768px 미만)
+   ============================================ */
+@media (max-width: 767px) {
+  /* 컨테이너 여백 축소 */
+  .container {
+    padding: 20px 16px;
+  }
+  
+  /* 제목 크기 축소 */
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  /* 검색 박스 세로 배치 */
+  .search-box {
+    flex-direction: column;
+  }
+  
+  /* 버튼 전체 너비 */
+  .search-box button {
+    width: 100%;
+  }
 }

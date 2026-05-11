@@ -494,7 +494,241 @@ const element = document.querySelector('#search-input');
 
 ---
 
+---
+
+## 🎯 5차 요청 (ID 명명 규칙 변경 및 다크 모드 디자인)
+
+### 사용자 요청 (ID 변경)
+```
+결과 목록 영역의 id를 repoList로 고정하고,
+상태 메시지 영역의 id를 statusMessage로 고정해서 다시 작성해 주세요.
+
+추가 조건:
+1. 입력창 id는 searchInput으로 해 주세요.
+2. 버튼 id는 searchButton으로 해 주세요.
+3. JavaScript에서 선택하기 쉽게 구조를 단순하게 유지해 주세요.
+```
+
+### 사용자 요청 (다크 모드 디자인)
+```
+GitHub Repository Search Board 앱의 CSS를 수정해 주세요.
+
+조건:
+1. Bootstrap 느낌의 흰색 프로필 UI로 만들지 않습니다.
+2. 다크 모드 기반의 검색 보드 느낌으로 디자인합니다.
+3. 검색창과 버튼은 상단에 배치합니다.
+4. 저장소 카드는 그리드 형태로 배치합니다.
+5. 모바일에서는 1열, 태블릿에서는 2열, 데스크톱에서는 3열로 보이게 합니다.
+6. 초보자가 이해할 수 있도록 CSS 주석을 달아 주세요.
+```
+
+### 수행 작업
+
+#### 1. ID 명명 규칙 변경 (camelCase 적용)
+**변경 전 (kebab-case):**
+- `search-input` → `searchInput`
+- `search-btn` → `searchButton`
+- `status-message` → `statusMessage`
+- `repo-list` → `repoList`
+
+**변경 이유:**
+- JavaScript에서 선택하기 쉬움
+- camelCase는 JavaScript 표준 명명 규칙
+- 코드 가독성 향상
+
+**수정된 파일:**
+- `index.html`: 모든 ID를 camelCase로 변경
+- `app.js`: DOM 선택자 변수명 및 getElementById 인자 변경
+- `style.css`: `#statusMessage` ID 선택자 변경
+- `STRUCTURE.md`: 문서 업데이트
+
+#### 2. 다크 모드 디자인 적용
+
+**CSS 변수 (다크 모드 테마):**
+```css
+:root {
+  /* 배경 색상 */
+  --bg-primary: #0d1117;        /* 메인 배경 (진한 검정) */
+  --bg-secondary: #161b22;      /* 카드 배경 (약간 밝은 검정) */
+  --bg-tertiary: #21262d;       /* 호버 배경 */
+  
+  /* 텍스트 색상 */
+  --text-primary: #c9d1d9;      /* 주요 텍스트 (밝은 회색) */
+  --text-secondary: #8b949e;    /* 보조 텍스트 (중간 회색) */
+  --text-link: #58a6ff;         /* 링크 색상 (파란색) */
+  
+  /* 강조 색상 */
+  --accent-primary: #238636;    /* 주요 강조 (녹색) */
+  --accent-hover: #2ea043;      /* 호버 강조 */
+  
+  /* 테두리 색상 */
+  --border-color: #30363d;      /* 테두리 (어두운 회색) */
+  
+  /* 그림자 */
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+```
+
+**주요 디자인 특징:**
+1. **다크 모드 기반**: GitHub 스타일의 어두운 배경
+2. **반응형 그리드**:
+   - 모바일 (< 768px): 1열
+   - 태블릿 (≥ 768px): 2열
+   - 데스크톱 (≥ 1024px): 3열
+3. **호버 효과**: 카드 및 버튼에 부드러운 전환 효과
+4. **그림자 효과**: 깊이감 있는 UI
+5. **상세한 주석**: 모든 CSS 섹션에 한글 주석
+
+**반응형 미디어 쿼리:**
+```css
+/* 태블릿: 2열 */
+@media (min-width: 768px) {
+  .repo-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 데스크톱: 3열 */
+@media (min-width: 1024px) {
+  .repo-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 모바일 최적화 */
+@media (max-width: 767px) {
+  .search-box {
+    flex-direction: column;
+  }
+}
+```
+
+### 핵심 변경사항
+
+#### HTML (index.html)
+```html
+<!-- 변경 전 -->
+<input id="search-input" />
+<button id="search-btn">검색</button>
+<div id="status-message"></div>
+<div id="repo-list"></div>
+
+<!-- 변경 후 -->
+<input id="searchInput" />
+<button id="searchButton">검색</button>
+<div id="statusMessage"></div>
+<div id="repoList"></div>
+```
+
+#### JavaScript (app.js)
+```javascript
+// 변경 전
+const searchInput = document.getElementById('search-input');
+const searchBtn = document.getElementById('search-btn');
+const statusMessage = document.getElementById('status-message');
+const repoList = document.getElementById('repo-list');
+
+// 변경 후
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
+const statusMessage = document.getElementById('statusMessage');
+const repoList = document.getElementById('repoList');
+```
+
+#### CSS (style.css)
+- 전체 파일을 다크 모드로 재작성
+- 400줄 이상의 상세한 주석 추가
+- 반응형 그리드 시스템 구현
+- 호버 및 전환 효과 추가
+
+---
+
+## 🔑 5차 요청 핵심 성과
+
+### 1. 명명 규칙 통일
+- ✅ camelCase 적용 (JavaScript 표준)
+- ✅ 일관성 있는 ID 명명
+- ✅ 코드 가독성 향상
+
+### 2. 다크 모드 디자인
+- ✅ GitHub 스타일의 어두운 테마
+- ✅ 반응형 그리드 (1열/2열/3열)
+- ✅ 부드러운 호버 효과
+- ✅ 깊이감 있는 그림자
+
+### 3. 반응형 디자인
+- ✅ 모바일 최적화 (1열)
+- ✅ 태블릿 지원 (2열)
+- ✅ 데스크톱 지원 (3열)
+- ✅ 미디어 쿼리 활용
+
+### 4. 문서화 강화
+- ✅ CSS 전체에 상세한 한글 주석
+- ✅ 섹션별 구분선 추가
+- ✅ 초보자도 이해 가능한 설명
+
+---
+
+## 📊 최종 프로젝트 구조
+
+```
+task_4/
+├── 📄 index.html                    # HTML 구조 (camelCase ID)
+├── 🎨 style.css                     # 다크 모드 CSS (400+ 줄)
+├── ⚙️ app.js                        # JavaScript 로직 (camelCase)
+├── 📖 STRUCTURE.md                  # 구조 설명 (업데이트)
+├── 📝 README.md                     # 초보자 가이드
+├── 📚 API_URL_EXAMPLE.md            # API 문서
+├── 🔧 github-api-url-builder.js     # API URL 예시
+├── 🐙 GITHUB_SETUP.md               # GitHub 가이드
+└── 📋 PROMPT.md                     # 진행 기록 (현재 파일)
+```
+
+---
+
+## 💡 추가 학습 포인트
+
+### camelCase vs kebab-case
+```javascript
+// camelCase (JavaScript 표준)
+const searchInput = document.getElementById('searchInput');
+
+// kebab-case (HTML/CSS 전통)
+const searchInput = document.getElementById('search-input');
+```
+
+### CSS 변수 활용
+```css
+/* 변수 정의 */
+:root {
+  --bg-primary: #0d1117;
+}
+
+/* 변수 사용 */
+body {
+  background-color: var(--bg-primary);
+}
+```
+
+### 반응형 그리드
+```css
+/* 기본: 1열 */
+grid-template-columns: 1fr;
+
+/* 태블릿: 2열 */
+@media (min-width: 768px) {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* 데스크톱: 3열 */
+@media (min-width: 1024px) {
+  grid-template-columns: repeat(3, 1fr);
+}
+```
+
+---
+
 **작성일**: 2026년 5월 11일  
 **프로젝트**: GitHub Repository Search Board  
-**버전**: 2.0.0 (파일 분리 버전)
-**최종 업데이트**: 2026년 5월 11일 20:44
+**버전**: 3.0.0 (다크 모드 버전)
+**최종 업데이트**: 2026년 5월 11일 20:53

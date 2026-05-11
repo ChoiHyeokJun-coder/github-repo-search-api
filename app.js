@@ -1,10 +1,10 @@
 // GitHub Repository Search Board - JavaScript
 
 // DOM 요소 선택
-const searchInput = document.getElementById('search-input');
-const searchBtn = document.getElementById('search-btn');
-const statusMessage = document.getElementById('status-message');
-const repoList = document.getElementById('repo-list');
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
+const statusMessage = document.getElementById('statusMessage');
+const repoList = document.getElementById('repoList');
 
 /**
  * GitHub 저장소 검색 함수
@@ -76,7 +76,7 @@ async function searchRepositories() {
 }
 
 // 이벤트 리스너 등록
-searchBtn.addEventListener('click', searchRepositories);
+searchButton.addEventListener('click', searchRepositories);
 
 // 엔터키를 눌러도 검색되도록 지원
 searchInput.addEventListener('keypress', (e) => {
