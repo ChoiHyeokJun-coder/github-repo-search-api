@@ -728,7 +728,228 @@ grid-template-columns: 1fr;
 
 ---
 
+---
+
+## 🎯 6차 요청 (순수 JavaScript 입력값 검증 코드)
+
+### 사용자 요청
+```
+순수 JavaScript로 검색 버튼 클릭 시 입력창의 값을 읽는 코드를 작성해 주세요.
+
+조건:
+1. input의 id는 searchInput입니다.
+2. button의 id는 searchButton입니다.
+3. 상태 메시지 영역의 id는 statusMessage입니다.
+4. 입력값 앞뒤 공백을 제거합니다.
+5. 입력값이 비어 있으면 상태 메시지에 "검색어를 입력해 주세요."라고 표시합니다.
+6. 입력값이 있으면 console.log로 검색어를 출력합니다.
+7. 초보자가 이해할 수 있도록 주석을 달아 주세요.
+```
+
+### 수행 작업
+
+**simple-search.js 생성**
+- 초보자를 위한 상세한 주석이 포함된 순수 JavaScript 코드
+- 단계별로 명확하게 구분된 코드 구조
+- 각 단계마다 상세한 설명 추가
+
+### 핵심 코드 구조
+
+#### 1단계: HTML 요소 선택
+```javascript
+// getElementById()를 사용하여 HTML 요소를 선택합니다.
+const searchInput = document.getElementById('searchInput');       // 검색 입력창
+const searchButton = document.getElementById('searchButton');     // 검색 버튼
+const statusMessage = document.getElementById('statusMessage');   // 상태 메시지 영역
+```
+
+#### 2단계: 검색 버튼 클릭 이벤트 처리 함수
+```javascript
+function handleSearch() {
+  // 2-1. 입력창의 값을 가져오기
+  const inputValue = searchInput.value;
+  
+  // 2-2. 앞뒤 공백 제거하기
+  // .trim()은 문자열 앞뒤의 공백을 제거합니다.
+  const searchTerm = inputValue.trim();
+  
+  // 2-3. 입력값이 비어있는지 확인하기
+  if (!searchTerm) {
+    statusMessage.textContent = '검색어를 입력해 주세요.';
+    return; // 함수 종료
+  }
+  
+  // 2-4. 입력값이 있으면 콘솔에 출력하기
+  console.log('검색어:', searchTerm);
+  
+  // 추가: 상태 메시지 업데이트
+  statusMessage.textContent = `"${searchTerm}" 검색 중...`;
+}
+```
+
+#### 3단계: 이벤트 리스너 등록
+```javascript
+// addEventListener()를 사용하여 버튼 클릭 이벤트를 감지합니다.
+searchButton.addEventListener('click', handleSearch);
+
+// 엔터키로도 검색할 수 있게 하기
+searchInput.addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+    handleSearch();
+  }
+});
+```
+
+### 코드 설명 요약
+
+1. **getElementById()**: HTML 요소를 선택
+2. **.value**: 입력창의 값을 가져오기
+3. **.trim()**: 앞뒤 공백 제거
+4. **if (!searchTerm)**: 빈 값인지 확인
+5. **console.log()**: 검색어를 콘솔에 출력
+6. **addEventListener()**: 클릭 이벤트 감지
+
+### 학습 포인트
+
+#### DOM 요소 선택
+```javascript
+// ID로 선택 (가장 일반적)
+const element = document.getElementById('searchInput');
+
+// 다른 방법들
+const element = document.querySelector('#searchInput');
+const element = document.querySelectorAll('.class-name');
+```
+
+#### 문자열 메서드
+```javascript
+// .trim() - 앞뒤 공백 제거
+"  hello  ".trim()  // "hello"
+
+// .value - input 요소의 값 가져오기
+searchInput.value
+
+// .textContent - 텍스트 내용 설정/가져오기
+statusMessage.textContent = '메시지';
+```
+
+#### 이벤트 처리
+```javascript
+// 클릭 이벤트
+element.addEventListener('click', function() {
+  // 실행할 코드
+});
+
+// 키보드 이벤트
+element.addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+    // 엔터키를 눌렀을 때 실행할 코드
+  }
+});
+```
+
+---
+
+## 🔑 6차 요청 핵심 성과
+
+### 1. 초보자 친화적 코드
+- ✅ 단계별로 명확하게 구분
+- ✅ 각 줄마다 상세한 주석
+- ✅ 이해하기 쉬운 변수명
+- ✅ 간단하고 명확한 로직
+
+### 2. 요구사항 완벽 충족
+- ✅ searchInput ID 사용
+- ✅ searchButton ID 사용
+- ✅ statusMessage ID 사용
+- ✅ .trim()으로 공백 제거
+- ✅ 빈 값 검증
+- ✅ console.log() 출력
+- ✅ 상세한 주석
+
+### 3. 추가 기능
+- ✅ 엔터키 지원
+- ✅ 상태 메시지 업데이트
+- ✅ 사용 방법 안내
+- ✅ 코드 설명 요약
+
+---
+
+## 📁 최종 파일 목록
+
+### 전체 파일 구조
+```
+task_4/
+├── 📄 index.html                    # HTML 구조 (camelCase ID)
+├── 🎨 style.css                     # 다크 모드 CSS (400+ 줄)
+├── ⚙️ app.js                        # JavaScript 로직 (GitHub API)
+├── 🔰 simple-search.js              # 순수 JavaScript 입력 검증 (신규)
+├── 📖 STRUCTURE.md                  # 구조 설명
+├── 📝 README.md                     # 초보자 가이드
+├── 📚 API_URL_EXAMPLE.md            # API 문서
+├── 🔧 github-api-url-builder.js     # API URL 예시
+├── 🐙 GITHUB_SETUP.md               # GitHub 가이드
+└── 📋 PROMPT.md                     # 진행 기록 (현재 파일)
+```
+
+---
+
+## 💡 JavaScript 기초 학습 포인트
+
+### 변수 선택 (const vs let vs var)
+```javascript
+// const: 재할당 불가 (권장)
+const searchInput = document.getElementById('searchInput');
+
+// let: 재할당 가능
+let count = 0;
+count = 1;
+
+// var: 구식 (사용 지양)
+var oldStyle = 'avoid';
+```
+
+### 조건문 (if문)
+```javascript
+// 기본 if문
+if (condition) {
+  // 조건이 true일 때 실행
+}
+
+// if-else문
+if (condition) {
+  // 조건이 true일 때
+} else {
+  // 조건이 false일 때
+}
+
+// 부정 연산자 (!)
+if (!searchTerm) {
+  // searchTerm이 빈 문자열일 때
+}
+```
+
+### 함수 정의
+```javascript
+// 함수 선언식
+function handleSearch() {
+  // 함수 내용
+}
+
+// 화살표 함수
+const handleSearch = () => {
+  // 함수 내용
+};
+
+// 익명 함수
+element.addEventListener('click', function() {
+  // 함수 내용
+});
+```
+
+---
+
 **작성일**: 2026년 5월 11일  
 **프로젝트**: GitHub Repository Search Board  
-**버전**: 3.0.0 (다크 모드 버전)
-**최종 업데이트**: 2026년 5월 11일 20:53
+**버전**: 3.1.0 (입력 검증 추가)
+**최종 업데이트**: 2026년 5월 11일 21:21
