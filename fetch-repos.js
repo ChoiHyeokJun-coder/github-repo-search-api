@@ -58,7 +58,11 @@ async function fetchRepos(keyword) {
   // 5단계: 데이터 반환하기
   // ============================================
   
-  // 5-1. 파싱된 JSON 데이터를 반환
+  // 5-1. 받아온 JSON 데이터를 콘솔에 출력
+  // console.log()로 데이터를 확인할 수 있습니다.
+  console.log('받아온 JSON 데이터:', data);
+  
+  // 5-2. 파싱된 JSON 데이터를 반환
   // return으로 함수를 호출한 곳에 데이터를 전달합니다.
   return data;
 }
