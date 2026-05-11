@@ -280,6 +280,221 @@ task_4/
 
 ---
 
+---
+
+## 🎯 4차 요청 (파일 분리 및 구조화)
+
+### 사용자 요청
+```
+순수 HTML/CSS/JavaScript로 GitHub Repository Search Board 앱의 기본 HTML 구조를 작성해 주세요.
+
+조건:
+1. 검색어 입력창이 있어야 합니다.
+2. 검색 버튼이 있어야 합니다.
+3. 상태 메시지 영역이 있어야 합니다.
+4. 저장소 카드 목록을 보여줄 영역이 있어야 합니다.
+5. JavaScript에서 선택하기 쉽도록 id를 명확히 붙여 주세요.
+6. CSS는 style.css, JavaScript는 app.js로 분리해 주세요.
+```
+
+### 수행 작업
+
+1. **style.css 생성**
+   - 기존 index.html의 인라인 스타일을 외부 파일로 분리
+   - CSS 변수 사용 (색상 테마)
+   - 반응형 그리드 레이아웃
+   - GitHub 스타일 디자인
+   - 모든 스타일에 한글 주석 추가
+
+2. **app.js 생성**
+   - 기존 index.html의 인라인 스크립트를 외부 파일로 분리
+   - DOM 요소 선택 로직
+   - GitHub API 호출 함수
+   - 이벤트 리스너 등록
+   - 상세한 한글 주석 추가
+
+3. **index.html 재구성**
+   - 깔끔한 HTML 구조만 유지
+   - 명확한 ID 부여:
+     - `search-input`: 검색 입력창
+     - `search-btn`: 검색 버튼
+     - `status-message`: 상태 메시지
+     - `repo-list`: 저장소 목록
+   - 외부 CSS/JS 파일 링크
+
+4. **STRUCTURE.md 생성**
+   - 파일 구조 설명
+   - HTML 구조 상세 설명
+   - CSS 구조 설명
+   - JavaScript 구조 설명
+   - ID 및 선택자 정리 (표 형식)
+   - 데이터 흐름 다이어그램
+   - 커스터마이징 가이드
+
+### 핵심 변경사항
+
+#### HTML 구조 (index.html)
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Repository Search Board</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>GitHub Repo Search Board</h1>
+    
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="저장소 키워드를 입력하세요" />
+      <button id="search-btn">검색</button>
+    </div>
+
+    <div id="status-message">검색어를 입력하고 검색 버튼을 눌러주세요.</div>
+    <div id="repo-list" class="repo-list"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+```
+
+#### 파일 분리 효과
+- **유지보수성 향상**: 각 파일이 명확한 역할 수행
+- **재사용성 증가**: CSS와 JS를 다른 프로젝트에서도 사용 가능
+- **가독성 개선**: HTML 구조가 깔끔하고 이해하기 쉬움
+- **협업 용이**: 각 파일을 독립적으로 수정 가능
+
+### 생성된 파일
+
+#### 6. style.css (신규)
+- **목적**: 모든 스타일을 외부 파일로 분리
+- **내용**:
+  - CSS 변수 정의 (색상 테마)
+  - 반응형 레이아웃
+  - 그리드 시스템
+  - 호버 효과 및 트랜지션
+  - 모든 스타일에 한글 주석
+
+#### 7. app.js (신규)
+- **목적**: 모든 JavaScript 로직을 외부 파일로 분리
+- **내용**:
+  - DOM 요소 선택
+  - `searchRepositories()` 함수
+  - GitHub API 호출 로직
+  - 동적 카드 생성
+  - 이벤트 리스너 (클릭, 엔터키)
+  - 상세한 한글 주석
+
+#### 8. STRUCTURE.md (신규)
+- **목적**: 프로젝트 구조 상세 설명
+- **내용**:
+  - 파일 구조 트리
+  - HTML 구조 설명 (4개 주요 요소)
+  - CSS 구조 설명 (변수, 클래스)
+  - JavaScript 구조 설명 (함수, 이벤트)
+  - ID 및 선택자 정리 표
+  - 데이터 흐름 다이어그램
+  - 동적 생성 카드 구조
+  - 커스터마이징 가이드
+
+---
+
+## 📁 업데이트된 파일 목록
+
+### 전체 파일 구조
+```
+task_4/
+├── index.html                    # HTML 구조 (외부 파일 링크)
+├── style.css                     # CSS 스타일 (신규)
+├── app.js                        # JavaScript 로직 (신규)
+├── STRUCTURE.md                  # 구조 설명 문서 (신규)
+├── github-api-url-builder.js     # API URL 생성 예시
+├── README.md                     # 초보자 가이드
+├── API_URL_EXAMPLE.md            # API 상세 문서
+├── GITHUB_SETUP.md               # GitHub 설정 가이드
+└── PROMPT.md                     # 프롬프트 진행 기록 (현재 파일)
+```
+
+---
+
+## 🔑 4차 요청 핵심 성과
+
+### 1. 파일 분리 완료
+- ✅ HTML: 구조만 담당 (index.html)
+- ✅ CSS: 스타일만 담당 (style.css)
+- ✅ JavaScript: 로직만 담당 (app.js)
+- ✅ 관심사의 분리 (Separation of Concerns) 원칙 준수
+
+### 2. 명확한 ID 부여
+- ✅ `search-input`: 검색 입력창
+- ✅ `search-btn`: 검색 버튼
+- ✅ `status-message`: 상태 메시지
+- ✅ `repo-list`: 저장소 목록
+
+### 3. 문서화 강화
+- ✅ STRUCTURE.md: 구조 상세 설명
+- ✅ 모든 코드에 한글 주석
+- ✅ ID 및 선택자 정리 표
+- ✅ 데이터 흐름 다이어그램
+
+### 4. 유지보수성 향상
+- 각 파일이 독립적으로 수정 가능
+- 코드 재사용성 증가
+- 협업 용이성 향상
+- 디버깅 편의성 증가
+
+---
+
+## 📊 업데이트된 프로젝트 구조
+
+```
+task_4/
+├── 📄 index.html                    # HTML 구조 (메인 파일)
+├── 🎨 style.css                     # CSS 스타일 (신규)
+├── ⚙️ app.js                        # JavaScript 로직 (신규)
+├── 📖 STRUCTURE.md                  # 구조 설명 (신규)
+├── 📝 README.md                     # 초보자 가이드
+├── 📚 API_URL_EXAMPLE.md            # API 문서
+├── 🔧 github-api-url-builder.js     # API URL 예시
+├── 🐙 GITHUB_SETUP.md               # GitHub 가이드
+└── 📋 PROMPT.md                     # 진행 기록 (현재 파일)
+```
+
+---
+
+## 💡 추가 학습 포인트
+
+### 관심사의 분리 (Separation of Concerns)
+```
+HTML  → 구조 (Structure)
+CSS   → 표현 (Presentation)
+JS    → 동작 (Behavior)
+```
+
+### 외부 파일 링크
+```html
+<!-- CSS 링크 -->
+<link rel="stylesheet" href="style.css" />
+
+<!-- JavaScript 링크 -->
+<script src="app.js"></script>
+```
+
+### DOM 요소 선택 패턴
+```javascript
+// ID로 선택 (가장 빠름)
+const element = document.getElementById('search-input');
+
+// querySelector (유연함)
+const element = document.querySelector('#search-input');
+```
+
+---
+
 **작성일**: 2026년 5월 11일  
-**프로젝트**: GitHub 저장소 검색 URL 생성기  
-**버전**: 1.0.0
+**프로젝트**: GitHub Repository Search Board  
+**버전**: 2.0.0 (파일 분리 버전)
+**최종 업데이트**: 2026년 5월 11일 20:44
